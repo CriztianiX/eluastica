@@ -3,31 +3,32 @@ import EluasticaAbstractFilter from require "eluastica.filter.abstract_filter"
 class EluasticaFilterTerms extends EluasticaAbstractFilter
   name: "terms"
   ---
-  -- Terms
-  --
-  -- @var array Terms
-  --
-  _terms: {}
-  ---
-  -- Params
-  --
-  -- @var array Params
-  --
-  _params: {}
-  ---
-  -- Terms key
-  --
-  -- @var string Terms key
-  --
-  _key: ''
-
-  ---
   -- Creates terms filter
   --
   -- @param string $key   Terms key
   -- @param array  $terms Terms values
   --
   new: (key = '', terms = {}) =>
+    super!
+    ---
+    -- Terms
+    --
+    -- @var array Terms
+    --
+    @_terms = {}
+    ---
+    -- Params
+    --
+    -- @var array Params
+    --
+    @_params = {}
+    ---
+    -- Terms key
+    --
+    -- @var string Terms key
+    --
+    @_key = ''
+
     @setTerms(key, terms)
 
   ---

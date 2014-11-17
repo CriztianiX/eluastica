@@ -3,49 +3,27 @@ do
   local _obj_0 = require("eluastica.filter.abstract_filter")
   EluasticaAbstractFilter = _obj_0.EluasticaAbstractFilter
 end
-local EluasticaFilterTerms
+local EluasticaFilterMissing
 do
   local _parent_0 = EluasticaAbstractFilter
   local _base_0 = {
-    name = "terms",
-    setTerms = function(self, key, terms)
-      self._key = key
-      local values = { }
-      for _, val in pairs(terms) do
-        table.insert(values, val)
-      end
-      self._terms = values
-      return true
-    end,
-    addTerm = function(self, term)
-      table.insert(self._terms, term)
-      return true
-    end,
-    toArray = function(self)
-      self._params[self._key] = self._terms
-      return {
-        terms = self._params
-      }
+    name = "missing",
+    setField = function(self, field)
+      return self:setParam('field', field)
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
   local _class_0 = setmetatable({
-    __init = function(self, key, terms)
-      if key == nil then
-        key = ''
-      end
-      if terms == nil then
-        terms = { }
+    __init = function(self, field)
+      if field == nil then
+        field = ''
       end
       _parent_0.__init(self)
-      self._terms = { }
-      self._params = { }
-      self._key = ''
-      return self:setTerms(key, terms)
+      return self:setField(field)
     end,
     __base = _base_0,
-    __name = "EluasticaFilterTerms",
+    __name = "EluasticaFilterMissing",
     __parent = _parent_0
   }, {
     __index = function(cls, name)
@@ -66,8 +44,8 @@ do
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
-  EluasticaFilterTerms = _class_0
+  EluasticaFilterMissing = _class_0
 end
 return {
-  EluasticaFilterTerms = EluasticaFilterTerms
+  EluasticaFilterMissing = EluasticaFilterMissing
 }
