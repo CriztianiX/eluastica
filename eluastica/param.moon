@@ -8,17 +8,16 @@
 
 moses = require "eluastica.moses"
 class EluasticaParam
-  -- Params
-  -- @var array
-  _params: {}
-
-  --
-  -- Raw Params
-  --
-  -- @var array
-  --
-  _rawParams: {}
-
+  new: () =>
+    -- Params
+    -- @var array
+    @_params = {}
+    --
+    -- Raw Params
+    --
+    -- @var array
+    --
+    @_rawParams = {}
   ---
    -- Converts the params to an array. A default implementation exist to create
    -- the an array out of the class name (last part of the class name)
@@ -69,7 +68,7 @@ class EluasticaParam
    --
   setParam: (key, value) =>
     @_params[key] = value
-    return @
+    return true
 
   ---
   -- Returns a specific param

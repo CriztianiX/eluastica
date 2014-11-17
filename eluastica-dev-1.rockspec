@@ -19,12 +19,14 @@ dependencies = {
 build = {
 	type = "builtin",
 	modules = {
-		["eluastica.param"] = "eluastica/param.lua",
-		["eluastica.util"] = "eluastica/util.lua",
 		["eluastica.filter.abstract_filter"] = "eluastica/filter/abstract_filter.lua",
+		["eluastica.filter.abstract_multi"] = "eluastica/filter/abstract_multi.lua",
+		["eluastica.filter.and"] = "eluastica/filter/and.lua",
 		["eluastica.filter.exists"] = "eluastica/filter/exists.lua",
 		["eluastica.filter.terms"] = "eluastica/filter/terms.lua",
-		["eluastica.moses"] = "eluastica/vendor/moses.lua"
+		["eluastica.moses"] = "eluastica/vendor/moses.lua",
+		["eluastica.param"] = "eluastica/param.lua",
+		["eluastica.util"] = "eluastica/util.lua"
 	}
 }
 

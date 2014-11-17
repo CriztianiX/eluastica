@@ -16,6 +16,7 @@ do
   setmetatable(_base_0, _parent_0.__base)
   local _class_0 = setmetatable({
     __init = function(self, field)
+      _parent_0.__init(self)
       return self:setField(field)
     end,
     __base = _base_0,

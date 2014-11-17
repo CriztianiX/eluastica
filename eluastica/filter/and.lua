@@ -1,24 +1,25 @@
-local EluasticaParam
+local EluasticaAbstractMulti
 do
-  local _obj_0 = require("eluastica.param")
-  EluasticaParam = _obj_0.EluasticaParam
+  local _obj_0 = require("eluastica.filter.abstract_multi")
+  EluasticaAbstractMulti = _obj_0.EluasticaAbstractMulti
 end
-local EluasticaAbstractFilter
+local EluasticaFilterAnd
 do
-  local _parent_0 = EluasticaParam
+  local _parent_0 = EluasticaAbstractMulti
   local _base_0 = {
-    setName = function(self, name)
-      return self:setParam('_name', name)
+    name = "and",
+    _getBaseName = function(self)
+      return 'and'
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
   local _class_0 = setmetatable({
-    __init = function(self)
-      return _parent_0.__init(self)
+    __init = function(self, ...)
+      return _parent_0.__init(self, ...)
     end,
     __base = _base_0,
-    __name = "EluasticaAbstractFilter",
+    __name = "EluasticaFilterAnd",
     __parent = _parent_0
   }, {
     __index = function(cls, name)
@@ -39,8 +40,8 @@ do
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
-  EluasticaAbstractFilter = _class_0
+  EluasticaFilterAnd = _class_0
 end
 return {
-  EluasticaAbstractFilter = EluasticaAbstractFilter
+  EluasticaFilterAnd = EluasticaFilterAnd
 }

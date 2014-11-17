@@ -2,8 +2,6 @@ local moses = require("eluastica.moses")
 local EluasticaParam
 do
   local _base_0 = {
-    _params = { },
-    _rawParams = { },
     toArray = function(self)
       local data = { }
       data[self:_getBaseName()] = self:getParams()
@@ -19,7 +17,7 @@ do
     end,
     setParam = function(self, key, value)
       self._params[key] = value
-      return self
+      return true
     end,
     getParam = function(self, key)
       return self._params[key]
@@ -30,7 +28,10 @@ do
   }
   _base_0.__index = _base_0
   local _class_0 = setmetatable({
-    __init = function() end,
+    __init = function(self)
+      self._params = { }
+      self._rawParams = { }
+    end,
     __base = _base_0,
     __name = "EluasticaParam"
   }, {

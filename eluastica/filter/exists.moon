@@ -4,6 +4,7 @@ class EluasticaFilterExists extends EluasticaAbstractFilter
   name: "exists"
   
   new: (field) =>
+    super!
     @setField(field)
 
   setField: (field) =>

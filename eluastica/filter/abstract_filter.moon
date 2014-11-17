@@ -6,8 +6,9 @@ class EluasticaAbstractFilter extends EluasticaParam
   -- @param  string  $name Name
   -- @return AbstractFilter
   --
+  new: =>
+    super!
   setName: (name) =>
     return @setParam('_name', name)
-
 
 { :EluasticaAbstractFilter }
