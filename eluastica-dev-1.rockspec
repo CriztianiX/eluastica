@@ -30,6 +30,9 @@ build = {
 		["eluastica.filter.or"] = "eluastica/filter/or.lua",
 		["eluastica.moses"] = "eluastica/vendor/moses.lua",
 		["eluastica.param"] = "eluastica/param.lua",
+		["eluastica.query.abstract_query"] = "eluastica/query/abstract_query.lua",
+		["eluastica.query.filtered"] = "eluastica/query/filtered.lua",
+		["eluastica.query.wildcard"] = "eluastica/query/wildcard.lua",
 		["eluastica.util"] = "eluastica/util.lua"
 	}
 }

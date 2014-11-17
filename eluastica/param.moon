@@ -92,4 +92,6 @@ class EluasticaParam
   getParams: =>
     return @_params
 
+  hasParam: (key) =>
+    return @_params[key] ~= nil
 { :EluasticaParam }

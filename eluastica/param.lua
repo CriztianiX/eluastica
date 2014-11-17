@@ -24,6 +24,9 @@ do
     end,
     getParams = function(self)
       return self._params
+    end,
+    hasParam = function(self, key)
+      return self._params[key] ~= nil
     end
   }
   _base_0.__index = _base_0
