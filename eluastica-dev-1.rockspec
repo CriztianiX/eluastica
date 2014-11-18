@@ -2,7 +2,7 @@ package = "eluastica"
 version = "dev-1"
 
 source = {
-	url = "git://github.com/Changosdev/eluastica.git"
+	url = "git://github.com/CriztianiX/eluastica.git"
 }
 
 description = {
