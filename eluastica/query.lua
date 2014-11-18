@@ -23,6 +23,17 @@ do
     getQuery = function(self)
       return self:getParam('query')
     end,
+    setPage = function(self, page)
+      if page == nil then
+        page = 1
+      end
+      page = page - 1
+      if page > 0 then
+        local req_limit = self:getSize() or 10
+        local skip = page * req_limit
+        return query:setFrom(skip)
+      end
+    end,
     setFrom = function(self, ffrom)
       return self:setParam('from', ffrom)
     end,
@@ -34,6 +45,9 @@ do
         size = 10
       end
       return self:setParam('size', size)
+    end,
+    getSize = function(self)
+      return self:getParam('size')
     end,
     setLimit = function(self, limit)
       if limit == nil then
@@ -61,6 +75,7 @@ do
       _parent_0.__init(self)
       self._params = { }
       self._suggest = 0
+      local _ = self._limit
       if type(query) == "table" then
         return self:setRawQuery(query)
       end

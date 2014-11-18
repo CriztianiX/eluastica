@@ -8,6 +8,7 @@ class EluasticaQuery extends EluasticaParam
     super!
     @_params = {}
     @_suggest = 0
+    @_limit
 
     if type(query) == "table"
       @setRawQuery(query)
@@ -22,6 +23,13 @@ class EluasticaQuery extends EluasticaParam
   getQuery: =>
     return @getParam('query')
 
+  setPage: (page = 1 ) =>
+    page = page-1
+    if page > 0
+      req_limit = @getSize! or 10
+      skip = page * req_limit
+      return query\setFrom skip
+
   setFrom: (ffrom) =>
     return @setParam('from', ffrom)
 
@@ -30,6 +38,8 @@ class EluasticaQuery extends EluasticaParam
 
   setSize: (size = 10) =>
     return @setParam('size', size)
+
+  getSize: => @getParam('size')
 
   setLimit: (limit = 10) =>
     return @setSize(limit)
