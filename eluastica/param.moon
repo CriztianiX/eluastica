@@ -84,6 +84,9 @@ class EluasticaParam
     
     return @_params[key]
 
+  setParams: (params) =>
+    @_params = params
+
   ---
   -- Returns the params array
   --

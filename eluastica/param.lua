@@ -22,6 +22,9 @@ do
     getParam = function(self, key)
       return self._params[key]
     end,
+    setParams = function(self, params)
+      self._params = params
+    end,
     getParams = function(self)
       return self._params
     end,
