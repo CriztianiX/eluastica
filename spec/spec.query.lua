@@ -9,11 +9,7 @@ return describe("query tests", function()
     local req_limit = 10
     local query = EluasticaQuery()
     query:setLimit(req_limit)
-    local page = req_page - 1
-    if page > 0 then
-      local skip = page * req_limit
-      query:setFrom(skip)
-    end
+    query:setPage(req_page)
     local expected = {
       query = {
         match_all = { }

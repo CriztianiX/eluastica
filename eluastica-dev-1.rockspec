@@ -26,6 +26,7 @@ build = {
 		["eluastica.filter.exists"] = "eluastica/filter/exists.lua",
 		["eluastica.filter.geo_distance"] = "eluastica/filter/geo_distance.lua",
 		["eluastica.filter.missing"] = "eluastica/filter/missing.lua",
+		["eluastica.filter.nested"] = "eluastica/filter/nested.lua",
 		["eluastica.filter.term"] = "eluastica/filter/term.lua",
 		["eluastica.filter.terms"] = "eluastica/filter/terms.lua",
 		["eluastica.filter.or"] = "eluastica/filter/or.lua",
