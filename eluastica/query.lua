@@ -58,6 +58,9 @@ do
     setFields = function(self, fields)
       return self:setParam('fields', fields)
     end,
+    setSource = function(self, fields)
+      return self:setParam('_source', fields)
+    end,
     toArray = function(self)
       if self._params['query'] == nil and self._suggest == 0 then
         self:setQuery(EluasticaQueryMatchAll())

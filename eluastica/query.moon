@@ -47,6 +47,9 @@ class EluasticaQuery extends EluasticaParam
   setFields: (fields) =>
     return @setParam('fields', fields)
 
+  setSource: (fields) =>
+    @setParam('_source', fields)
+
   toArray: =>
     if @_params['query'] == nil and @_suggest == 0
       @setQuery EluasticaQueryMatchAll!
