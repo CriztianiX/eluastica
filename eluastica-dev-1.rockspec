@@ -19,6 +19,8 @@ dependencies = {
 build = {
 	type = "builtin",
 	modules = {
+    ["eluastica.abstract_transport"] = "eluastica/transport/abstract_transport.lua",
+    ["eluastica.connection"] = "eluastica/connection.lua",
 		["eluastica.filter.abstract_filter"] = "eluastica/filter/abstract_filter.lua",
 		["eluastica.filter.abstract_geo"] = "eluastica/filter/abstract_geo.lua",
 		["eluastica.filter.abstract_multi"] = "eluastica/filter/abstract_multi.lua",
@@ -37,7 +39,10 @@ build = {
 		["eluastica.query.filtered"] = "eluastica/query/filtered.lua",
 		["eluastica.query.match_all"] = "eluastica/query/match_all.lua",
 		["eluastica.query.wildcard"] = "eluastica/query/wildcard.lua",
+    ["eluastica.request"] = "eluastica/request.lua",
+    ["eluastica.transport.creater"] = "eluastica/transport/creater.lua",
+    ["eluastica.transport.http"] = "eluastica/transport/http.lua",
 		["eluastica.util"] = "eluastica/util.lua"
-	}
+  }
 }
 
