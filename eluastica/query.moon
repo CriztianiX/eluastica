@@ -28,7 +28,7 @@ class EluasticaQuery extends EluasticaParam
     if page > 0
       req_limit = @getSize! or 10
       skip = page * req_limit
-      return query\setFrom skip
+      return @setFrom skip
 
   setFrom: (ffrom) =>
     return @setParam('from', ffrom)
@@ -37,6 +37,7 @@ class EluasticaQuery extends EluasticaParam
     return @setParam('sort', sortArgs)
 
   setSize: (size = 10) =>
+    size = tonumber size
     return @setParam('size', size)
 
   getSize: => @getParam('size')

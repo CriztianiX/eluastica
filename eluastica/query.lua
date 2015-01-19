@@ -31,7 +31,7 @@ do
       if page > 0 then
         local req_limit = self:getSize() or 10
         local skip = page * req_limit
-        return query:setFrom(skip)
+        return self:setFrom(skip)
       end
     end,
     setFrom = function(self, ffrom)
@@ -44,6 +44,7 @@ do
       if size == nil then
         size = 10
       end
+      size = tonumber(size)
       return self:setParam('size', size)
     end,
     getSize = function(self)
