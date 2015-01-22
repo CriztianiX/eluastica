@@ -49,6 +49,23 @@ do
     getTransportObject = function(self)
       local transport = self:getTransport()
       return EluasticaTransportCreater.create(transport, self)
+    end,
+    hasConfig = function(self, key)
+      local config = self:getConfig()
+      if config[key] then
+        return true
+      end
+      return false
+    end,
+    getConfig = function(self, key)
+      if key == nil then
+        key = ''
+      end
+      local config = self:getParam('config')
+      if key == nil or key == '' then
+        return config
+      end
+      return config[key]
     end
   }
   _base_0.__index = _base_0

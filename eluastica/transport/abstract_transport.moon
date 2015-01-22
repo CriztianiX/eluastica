@@ -1,5 +1,4 @@
 import EluasticaParam from require "eluastica.param"
-import p from require "moon"
 
 class EluasticaAbstractTransport extends EluasticaParam
   new: ( connection = false ) =>
@@ -10,5 +9,8 @@ class EluasticaAbstractTransport extends EluasticaParam
 
   setConnection: (connection) =>
     @_connection = connection
+
+  getConnection: =>
+    @_connection
 
 { :EluasticaAbstractTransport }

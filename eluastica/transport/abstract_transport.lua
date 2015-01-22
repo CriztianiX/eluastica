@@ -3,17 +3,15 @@ do
   local _obj_0 = require("eluastica.param")
   EluasticaParam = _obj_0.EluasticaParam
 end
-local p
-do
-  local _obj_0 = require("moon")
-  p = _obj_0.p
-end
 local EluasticaAbstractTransport
 do
   local _parent_0 = EluasticaParam
   local _base_0 = {
     setConnection = function(self, connection)
       self._connection = connection
+    end,
+    getConnection = function(self)
+      return self._connection
     end
   }
   _base_0.__index = _base_0

@@ -48,6 +48,22 @@ class EluasticaConnection extends EluasticaParam
 
   getTransportObject: =>
     transport = @getTransport!
-    return EluasticaTransportCreater.create(transport, @) 
+    return EluasticaTransportCreater.create(transport, @)
+
+  hasConfig: (key) =>
+    config = @getConfig!
+
+    if config[key]
+      return true
+
+    return false
+
+  getConfig: (key = '') =>
+    config = @getParam('config')
+    
+    if key == nil or key == ''
+      return config
+
+    return config[key]
 
 { :EluasticaConnection }

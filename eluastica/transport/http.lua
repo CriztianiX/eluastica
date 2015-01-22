@@ -3,11 +3,54 @@ do
   local _obj_0 = require("eluastica.transport.abstract_transport")
   EluasticaAbstractTransport = _obj_0.EluasticaAbstractTransport
 end
+local p
+do
+  local _obj_0 = require("moon")
+  p = _obj_0.p
+end
+local util = require("eluastica.util")
+local http = require("socket.http")
+local ltn12 = require("ltn12")
+local cjson = require("cjson")
 local EluasticaTransportHttp
 do
   local _parent_0 = EluasticaAbstractTransport
   local _base_0 = {
-    exec = function(self, request, params) end
+    name = "http",
+    _scheme = 'http',
+    exec = function(self, request, params)
+      local connection = self:getConnection()
+      local url = connection:hasConfig('url') and connection:hasConfig('url') or ""
+      local baseUri
+      if not util.empty(url) then
+        baseUri = url
+      else
+        baseUri = self._scheme .. '://' .. connection:getHost() .. ':' .. connection:getPort() .. '/' .. connection:getPath()
+      end
+      baseUri = tostring(baseUri) .. tostring(request:getPath())
+      local query = request:getQuery()
+      local jsstr = cjson.encode(query)
+      local source = ltn12.source.string(jsstr)
+      local response = { }
+      local save = ltn12.sink.table(response)
+      local jsonsize = #jsstr
+      local h = {
+        ["Content-Type"] = "application/json",
+        ["content-length"] = jsonsize
+      }
+      local ok, code, headers = http.request({
+        url = baseUri,
+        method = 'GET',
+        headers = h,
+        source = source,
+        sink = save
+      })
+      if not ok then
+        return "execpion " .. code
+      end
+      local jsonObj = cjson.decode(table.concat(response))
+      return jsonObj
+    end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)

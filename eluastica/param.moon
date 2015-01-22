@@ -7,6 +7,7 @@
 -- @author Nicolas Ruflin <spam@ruflin.com>
 
 moses = require "eluastica.moses"
+
 class EluasticaParam
   new: () =>
     -- Params
