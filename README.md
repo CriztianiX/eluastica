@@ -20,7 +20,7 @@ Take a look at eluastica/filter directory for a complete list of implemented que
 ```moon
 import EluasticaFilterTerms from require "eluastica.filter.terms"
 
-names = EluasticaFilterTerms 'Document.name', {'Juan', 'Luis', ´Pedro'}
+names = EluasticaFilterTerms 'Document.name', {'Juan', 'Luis', 'Pedro'}
 names\setParam "execution", "or"
 ```
 
