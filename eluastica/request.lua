@@ -1,13 +1,7 @@
 local EluasticaParam
-do
-  local _obj_0 = require("eluastica.param")
-  EluasticaParam = _obj_0.EluasticaParam
-end
+EluasticaParam = require("eluastica.param").EluasticaParam
 local p
-do
-  local _obj_0 = require("moon")
-  p = _obj_0.p
-end
+p = require("moon").p
 local EluasticaRequest
 do
   local _parent_0 = EluasticaParam

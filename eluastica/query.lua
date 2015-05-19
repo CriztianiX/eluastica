@@ -1,13 +1,7 @@
 local EluasticaParam
-do
-  local _obj_0 = require("eluastica.param")
-  EluasticaParam = _obj_0.EluasticaParam
-end
+EluasticaParam = require("eluastica.param").EluasticaParam
 local EluasticaQueryMatchAll
-do
-  local _obj_0 = require("eluastica.query.match_all")
-  EluasticaQueryMatchAll = _obj_0.EluasticaQueryMatchAll
-end
+EluasticaQueryMatchAll = require("eluastica.query.match_all").EluasticaQueryMatchAll
 local EluasticaQuery
 do
   local _parent_0 = EluasticaParam

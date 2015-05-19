@@ -31,6 +31,7 @@ build = {
 		["eluastica.filter.term"] = "eluastica/filter/term.lua",
 		["eluastica.filter.terms"] = "eluastica/filter/terms.lua",
 		["eluastica.filter.or"] = "eluastica/filter/or.lua",
+		["eluastica.filter.range"] = "eluastica/filter/range.lua",
 		["eluastica.moses"] = "eluastica/vendor/moses.lua",
 		["eluastica.param"] = "eluastica/param.lua",
 		["eluastica.query"] = "eluastica/query.lua",
@@ -45,4 +46,3 @@ build = {
 		["eluastica.util"] = "eluastica/util.lua"
   }
 }
-

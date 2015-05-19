@@ -1,8 +1,5 @@
 local EluasticaAbstractGeo
-do
-  local _obj_0 = require("eluastica.filter.abstract_geo")
-  EluasticaAbstractGeo = _obj_0.EluasticaAbstractGeo
-end
+EluasticaAbstractGeo = require("eluastica.filter.abstract_geo").EluasticaAbstractGeo
 local EluasticaFilterGeoDistance
 do
   local _parent_0 = EluasticaAbstractGeo

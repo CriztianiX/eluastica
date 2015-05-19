@@ -1,8 +1,5 @@
 local EluasticaAbstractMulti
-do
-  local _obj_0 = require("eluastica.filter.abstract_multi")
-  EluasticaAbstractMulti = _obj_0.EluasticaAbstractMulti
-end
+EluasticaAbstractMulti = require("eluastica.filter.abstract_multi").EluasticaAbstractMulti
 local EluasticaFilterAnd
 do
   local _parent_0 = EluasticaAbstractMulti

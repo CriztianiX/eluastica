@@ -1,8 +1,5 @@
 local EluasticaParam
-do
-  local _obj_0 = require("eluastica.param")
-  EluasticaParam = _obj_0.EluasticaParam
-end
+EluasticaParam = require("eluastica.param").EluasticaParam
 local EluasticaAbstractFilter
 do
   local _parent_0 = EluasticaParam

@@ -1,8 +1,5 @@
 local EluasticaAbstractFilter
-do
-  local _obj_0 = require("eluastica.filter.abstract_filter")
-  EluasticaAbstractFilter = _obj_0.EluasticaAbstractFilter
-end
+EluasticaAbstractFilter = require("eluastica.filter.abstract_filter").EluasticaAbstractFilter
 local EluasticaFilterExists
 do
   local _parent_0 = EluasticaAbstractFilter

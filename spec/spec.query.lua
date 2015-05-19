@@ -1,8 +1,5 @@
 local EluasticaQuery
-do
-  local _obj_0 = require("eluastica.query")
-  EluasticaQuery = _obj_0.EluasticaQuery
-end
+EluasticaQuery = require("eluastica.query").EluasticaQuery
 return describe("query tests", function()
   return it("testing limit", function()
     local req_page = 5

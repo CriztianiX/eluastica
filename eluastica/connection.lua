@@ -1,13 +1,7 @@
 local EluasticaParam
-do
-  local _obj_0 = require("eluastica.param")
-  EluasticaParam = _obj_0.EluasticaParam
-end
+EluasticaParam = require("eluastica.param").EluasticaParam
 local EluasticaTransportCreater
-do
-  local _obj_0 = require("eluastica.transport.creater")
-  EluasticaTransportCreater = _obj_0.EluasticaTransportCreater
-end
+EluasticaTransportCreater = require("eluastica.transport.creater").EluasticaTransportCreater
 local EluasticaConnection
 do
   local _parent_0 = EluasticaParam

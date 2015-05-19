@@ -1,8 +1,5 @@
 local EluasticaFilterTerms
-do
-  local _obj_0 = require("eluastica.filter.terms")
-  EluasticaFilterTerms = _obj_0.EluasticaFilterTerms
-end
+EluasticaFilterTerms = require("eluastica.filter.terms").EluasticaFilterTerms
 return describe("filter terms tests", function()
   return it("runs", function()
     local filter = EluasticaFilterTerms('terms_field', {

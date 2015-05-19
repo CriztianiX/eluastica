@@ -1,8 +1,5 @@
 local EluasticaFilterExists
-do
-  local _obj_0 = require("eluastica.filter.exists")
-  EluasticaFilterExists = _obj_0.EluasticaFilterExists
-end
+EluasticaFilterExists = require("eluastica.filter.exists").EluasticaFilterExists
 return describe("exists filter tests", function()
   local filter
   before_each(function()

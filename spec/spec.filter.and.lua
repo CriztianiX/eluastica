@@ -1,18 +1,9 @@
 local EluasticaFilterAnd
-do
-  local _obj_0 = require("eluastica.filter.and")
-  EluasticaFilterAnd = _obj_0.EluasticaFilterAnd
-end
+EluasticaFilterAnd = require("eluastica.filter.and").EluasticaFilterAnd
 local EluasticaFilterExists
-do
-  local _obj_0 = require("eluastica.filter.exists")
-  EluasticaFilterExists = _obj_0.EluasticaFilterExists
-end
+EluasticaFilterExists = require("eluastica.filter.exists").EluasticaFilterExists
 local EluasticaFilterTerms
-do
-  local _obj_0 = require("eluastica.filter.terms")
-  EluasticaFilterTerms = _obj_0.EluasticaFilterTerms
-end
+EluasticaFilterTerms = require("eluastica.filter.terms").EluasticaFilterTerms
 return describe("Testing filter: and", function()
   return it("runs", function()
     local filter_and = EluasticaFilterAnd()
