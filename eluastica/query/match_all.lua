@@ -1,8 +1,5 @@
 local EluasticaAbstractQuery
-do
-  local _obj_0 = require("eluastica.query.abstract_query")
-  EluasticaAbstractQuery = _obj_0.EluasticaAbstractQuery
-end
+EluasticaAbstractQuery = require("eluastica.query.abstract_query").EluasticaAbstractQuery
 local EluasticaQueryMatchAll
 do
   local _parent_0 = EluasticaAbstractQuery

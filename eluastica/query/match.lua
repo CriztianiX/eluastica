@@ -1,40 +1,40 @@
 local EluasticaAbstractQuery
 EluasticaAbstractQuery = require("eluastica.query.abstract_query").EluasticaAbstractQuery
-local EluasticaQueryWildcard
+local EluasticaQueryMatch
 do
   local _parent_0 = EluasticaAbstractQuery
   local _base_0 = {
-    name = "wildcard",
-    setValue = function(self, key, value, boost)
-      if boost == nil then
-        boost = 1.0
+    name = "match",
+    ZERO_TERM_NONE = 'none',
+    ZERO_TERM_ALL = 'all',
+    setField = function(self, field, values)
+      return self:setParam(field, values)
+    end,
+    setFieldParam = function(self, field, key, value)
+      if not self._params[field] then
+        self._params[field] = { }
       end
-      return self:setParam(key, {
-        value = value,
-        boost = boost
-      })
+      self._params[field][key] = value
+      return self
+    end,
+    setFieldType = function(self, field, typee)
+      return self:setFieldParam(field, 'type', typee)
+    end,
+    setFieldOperator = function(self, field, operator)
+      return self:setFieldParam(field, 'operator', operator)
     end
   }
   _base_0.__index = _base_0
   setmetatable(_base_0, _parent_0.__base)
   local _class_0 = setmetatable({
-    __init = function(self, key, value, boost)
-      if key == nil then
-        key = nil
-      end
-      if value == nil then
-        value = nil
-      end
-      if boost == nil then
-        boost = 1.0
-      end
+    __init = function(self, field, values)
       _parent_0.__init(self)
-      if key ~= nil then
-        return self:setValue(key, value, boost)
+      if field and values then
+        return self:setParam(field, values)
       end
     end,
     __base = _base_0,
-    __name = "EluasticaQueryWildcard",
+    __name = "EluasticaQueryMatch",
     __parent = _parent_0
   }, {
     __index = function(cls, name)
@@ -55,8 +55,8 @@ do
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
-  EluasticaQueryWildcard = _class_0
+  EluasticaQueryMatch = _class_0
 end
 return {
-  EluasticaQueryWildcard = EluasticaQueryWildcard
+  EluasticaQueryMatch = EluasticaQueryMatch
 }
