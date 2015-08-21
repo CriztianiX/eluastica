@@ -36,6 +36,7 @@ build = {
 		["eluastica.param"] = "eluastica/param.lua",
 		["eluastica.query"] = "eluastica/query.lua",
 		["eluastica.query.abstract_query"] = "eluastica/query/abstract_query.lua",
+		["eluastica.query.ids"] = "eluastica/query/ids.lua",
 		["eluastica.query.filtered"] = "eluastica/query/filtered.lua",
     ["eluastica.query.match"] = "eluastica/query/match.lua",
 		["eluastica.query.match_all"] = "eluastica/query/match_all.lua",
