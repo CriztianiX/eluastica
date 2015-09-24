@@ -3,11 +3,19 @@ import EluasticaTransportCreater from require "eluastica.transport.creater"
 
 class EluasticaConnection extends EluasticaParam
   name: "connection"
-  
+
   @DEFAULT_PORT = 9200
-  @DEFAULT_HOST = 'localhost'  
-  @DEFAULT_TRANSPORT = 'Http'  
+  @DEFAULT_HOST = 'localhost'
+  @DEFAULT_TRANSPORT = 'Http'
   @TIMEOUT = 300
+
+  @create: ( params = {} ) =>
+    local connection
+
+    if type(params) == "table"
+      connection = EluasticaConnection(params)
+
+    connection
 
   new: ( params = {} ) =>
     @setParams(params)
@@ -60,7 +68,7 @@ class EluasticaConnection extends EluasticaParam
 
   getConfig: (key = '') =>
     config = @getParam('config')
-    
+
     if key == nil or key == ''
       return config
 

@@ -99,6 +99,16 @@ do
   self.DEFAULT_HOST = 'localhost'
   self.DEFAULT_TRANSPORT = 'Http'
   self.TIMEOUT = 300
+  self.create = function(self, params)
+    if params == nil then
+      params = { }
+    end
+    local connection
+    if type(params) == "table" then
+      connection = EluasticaConnection(params)
+    end
+    return connection
+  end
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end
