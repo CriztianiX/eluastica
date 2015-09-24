@@ -22,6 +22,7 @@ build = {
 		["eluastica.class"] = "eluastica/class.lua",
 		["eluastica.client"] = "eluastica/client.lua",
     ["eluastica.connection"] = "eluastica/connection.lua",
+		["eluastica.connection.strategy.simple"] = "eluastica/connection/strategy/simple.lua",
 		["eluastica.connection_pool"] = "eluastica/connection_pool/connection_pool.lua",
 		["eluastica.filter.abstract_filter"] = "eluastica/filter/abstract_filter.lua",
 		["eluastica.filter.abstract_geo"] = "eluastica/filter/abstract_geo.lua",
