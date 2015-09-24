@@ -1,17 +1,32 @@
 local EluasticaAbstractTransport
-do
-  local _obj_0 = require("eluastica.transport.abstract_transport")
-  EluasticaAbstractTransport = _obj_0.EluasticaAbstractTransport
-end
+EluasticaAbstractTransport = require("eluastica.transport.abstract_transport").EluasticaAbstractTransport
 local p
-do
-  local _obj_0 = require("moon")
-  p = _obj_0.p
-end
+p = require("moon").p
 local util = require("eluastica.util")
 local http = require("socket.http")
 local ltn12 = require("ltn12")
 local cjson = require("cjson")
+local url_escape
+url_escape = function(str)
+  local pattern = "^A-Za-z0-9%-%._~"
+  local cb
+  cb = function(c)
+    return string.format("%%%02X", string.byte(c))
+  end
+  str = {
+    str = gsub("[" .. pattern .. "]", cb(c))
+  }
+  return str
+end
+local http_build_query
+http_build_query = function(tb)
+  assert(type(tb) == "table", "tb must be a table")
+  local t = { }
+  for k, v in pairs(tb) do
+    table.insert(t, url_escape(tostring(k)) .. "=" .. url_escape(tostring(v)))
+  end
+  return table.concat(t, '&')
+end
 local EluasticaTransportHttp
 do
   local _parent_0 = EluasticaAbstractTransport
@@ -29,6 +44,9 @@ do
       end
       baseUri = tostring(baseUri) .. tostring(request:getPath())
       local query = request:getQuery()
+      if next(query) ~= nil then
+        baseUri = baseUri .. '?' .. http_build_query(query)
+      end
       local jsstr = cjson.encode(query)
       local source = ltn12.source.string(jsstr)
       local response = { }

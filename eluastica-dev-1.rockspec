@@ -48,6 +48,7 @@ build = {
 		["eluastica.query.match_all"] = "eluastica/query/match_all.lua",
 		["eluastica.query.wildcard"] = "eluastica/query/wildcard.lua",
     ["eluastica.request"] = "eluastica/request.lua",
+		["eluastica.scroll"] = "eluastica/scroll.lua",
 		["eluastica.search"] = "eluastica/search.lua",
     ["eluastica.transport.abstract_transport"] = "eluastica/transport/abstract_transport.lua",
     ["eluastica.transport.creater"] = "eluastica/transport/creater.lua",

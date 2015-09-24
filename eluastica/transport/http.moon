@@ -5,6 +5,17 @@ http = require("socket.http")
 ltn12 = require("ltn12")
 cjson = require "cjson"
 
+url_escape = (str) ->
+  return str
+
+http_build_query = (tb) ->
+  assert(type(tb)=="table","tb must be a table")
+  t = {}
+  for k,v in pairs(tb)
+    table.insert(t, url_escape(tostring(k)) .. "=" .. url_escape(tostring(v)))
+
+  return table.concat(t,'&')
+
 class EluasticaTransportHttp extends EluasticaAbstractTransport
   name: "http"
   _scheme: 'http'
@@ -22,7 +33,15 @@ class EluasticaTransportHttp extends EluasticaAbstractTransport
     baseUri = "#{baseUri}#{request\getPath!}"
     query = request\getQuery!
 
-    jsstr = cjson.encode query
+    if next(query) != nil
+      baseUri = baseUri .. '?'.. http_build_query(query)
+
+    data = request\getData()
+    require("moon.all")
+    p(baseUri)
+    p(data)
+
+    jsstr = cjson.encode data
     source = ltn12.source.string(jsstr)
     response = {}
     save = ltn12.sink.table(response)
@@ -39,7 +58,7 @@ class EluasticaTransportHttp extends EluasticaAbstractTransport
       source: source,
       sink: save
     }
-    
+
     if not ok
       return "execpion " .. code
 
