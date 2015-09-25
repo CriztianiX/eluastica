@@ -22,8 +22,9 @@ build = {
 		["eluastica.class"] = "eluastica/class.lua",
 		["eluastica.client"] = "eluastica/client.lua",
     ["eluastica.connection"] = "eluastica/connection.lua",
+		["eluastica.connection.strategy.factory"] = "eluastica/connection/strategy/factory.lua",
 		["eluastica.connection.strategy.simple"] = "eluastica/connection/strategy/simple.lua",
-		["eluastica.connection_pool"] = "eluastica/connection_pool/connection_pool.lua",
+		["eluastica.connection.connection_pool"] = "eluastica/connection/connection_pool.lua",
 		["eluastica.filter.abstract_filter"] = "eluastica/filter/abstract_filter.lua",
 		["eluastica.filter.abstract_geo"] = "eluastica/filter/abstract_geo.lua",
 		["eluastica.filter.abstract_multi"] = "eluastica/filter/abstract_multi.lua",
@@ -36,6 +37,7 @@ build = {
 		["eluastica.filter.terms"] = "eluastica/filter/terms.lua",
 		["eluastica.filter.or"] = "eluastica/filter/or.lua",
 		["eluastica.filter.range"] = "eluastica/filter/range.lua",
+		["eluastica.index"] = "eluastica/index.lua",
 		["eluastica.moses"] = "eluastica/vendor/moses.lua",
 		["eluastica.param"] = "eluastica/param.lua",
 		["eluastica.query"] = "eluastica/query.lua",
@@ -50,6 +52,7 @@ build = {
     ["eluastica.transport.abstract_transport"] = "eluastica/transport/abstract_transport.lua",
     ["eluastica.transport.creater"] = "eluastica/transport/creater.lua",
     ["eluastica.transport.http"] = "eluastica/transport/http.lua",
+		["eluastica.type"] = "eluastica/type.lua",
 		["eluastica.util"] = "eluastica/util.lua"
   }
 }

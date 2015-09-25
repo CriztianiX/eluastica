@@ -1,6 +1,6 @@
 -- class.lua
 -- scala style, single inheritance, multiple mix-in-able class
--- mixable class need to implement method 'mixed'. and it will called when target class constructor 
+-- mixable class need to implement method 'mixed'. and it will called when target class constructor
 -- try to initialize mixin object instead of normal ctor.
 
 local class = (function ()
@@ -30,17 +30,17 @@ local class = (function ()
 		end
 		local __lookup = function(self, method)
 			local m = self.class[method]
-			if not m then	
+			if not m then
 				error('no such method: ' .. method .. "\n" .. debug.traceback())
 			end
 			return m
 		end
 		local __conflict_detector = function (self)
 			return setmetatable({ __proxy = self }, {
-				__index = function (t, k) 
-					return t.__proxy[k] 
+				__index = function (t, k)
+					return t.__proxy[k]
 				end,
-				__newindex = function (t, k, v) 
+				__newindex = function (t, k, v)
 					if rawget(t.__proxy, k) then
 						error('value for key:' .. k .. ' from mixin:' .. t.__name .. ' of class:' .. t.__proxy.name .. ' already set')
 					end
@@ -65,7 +65,7 @@ local class = (function ()
 				twk(self, ...)
 			end
 			return self
-		end	
+		end
 		local __extends = function (protoclass, super)
 			local super_class = (type(super) == 'string' or classes[super] and super)
 			if not super_class then
@@ -105,7 +105,7 @@ local class = (function ()
 			--> if this class does not have 'aspect' method, its not mixable
 			if not tmp then
 				print(debug.traceback())
-				assert(false, 'cannot mixable:' .. mixed_class.name) 
+				assert(false, 'cannot mixable:' .. mixed_class.name)
 			end
 			assert(__root_class_name(mixed_class))
 			print('mixin:', __root_class_name(mixed_class), mixed_class.name)
@@ -120,8 +120,8 @@ local class = (function ()
 				for kk,vv in pairs(protoclass) do
 					if k == kk and __is_builtin_func_name(k) then
 						print(
-							"warning: built in function " .. kk .. 
-							" will override by "  .. protoclass.name .. 
+							"warning: built in function " .. kk ..
+							" will override by "  .. protoclass.name ..
 							" it may cause unpredictable problem"
 						)
 					end
@@ -152,14 +152,14 @@ local class = (function ()
 					end
 				end
 			end
-			
+
 			for idx,v in ipairs(protoclass.mixin_lookup) do
 				-->print('lookup order:', idx, v.name)
 			end
 			for k,v in pairs(protoclass.mixin) do
 				-->print('mix order:', v.name)
 			end
-			
+
 			local class = protoclass
 			while class and (not rawget(class, 'initialize')) do
 				class = class.super

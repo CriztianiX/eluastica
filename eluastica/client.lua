@@ -1,13 +1,28 @@
 local class = require ('eluastica.class')
 local moses = require "eluastica.moses"
 local EluasticaConnection = require ('eluastica.connection').EluasticaConnection
-local EluasticaConnectionPool = require ('eluastica.connection_pool').EluasticaConnectionPool
-local Client = class.Client {
+local EluasticaConnectionPool = require ('eluastica.connection.connection_pool').EluasticaConnectionPool
+local EluasticaConnectionStrategyFactory = require "eluastica.connection.strategy.factory"
+local EluasticaIndex = require("eluastica.index").EluasticaIndex
+local EluasticaRequest = require("eluastica.request").EluasticaRequest
+
+local EluasticaClient = class.EluasticaClient {
   initialize = function(self, config)
     self._config = {}
-
     self:setConfig(config)
     self:initConnections()
+  end,
+  getConnection = function(self)
+    return self._connectionPool:getConnection()
+  end,
+  request = function(self, path, method, data, query)
+    local connection = self:getConnection()
+    local request = EluasticaRequest(path, method, data, query, connection)
+    local response = request:send()
+    return response
+  end,
+  getIndex = function(self, name)
+    return EluasticaIndex.new(self, name)
   end,
   initConnections = function(self)
     local connections = {}
@@ -31,8 +46,7 @@ local Client = class.Client {
     -- TODO
     -- Implements connections strategy
     self:setConfigValue('connectionStrategy', 'Simple')
-    local strategy = 45
-    --$strategy = Connection\Strategy\StrategyFactory::create($this->getConfig('connectionStrategy'));
+    local strategy = EluasticaConnectionStrategyFactory.create(self:getConfig('connectionStrategy'));
 
     self._connectionPool = EluasticaConnectionPool.new(connections, strategy)
   end,
@@ -76,5 +90,5 @@ local Client = class.Client {
 }
 
 return {
-  EluasticaClient = Client
+  EluasticaClient = EluasticaClient
 }

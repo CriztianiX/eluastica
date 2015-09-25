@@ -9,9 +9,18 @@ return describe("client tests", function()
         }
       }
     })
-    require("moon.all")
 
-    p(client:getConfig())
-    --p(client)
+    local index = client:getIndex('default')
+    local type = index:getType('discount')
+    local path = index:getName() ..
+      '/' .. type:getName() .. '/_search'
+
+    local query = {
+      query = { match_all = {} }
+
+    }
+    response = client:request(path, "GET", query)
+    require("moon.all")
+    p(response)
   end)
 end)
