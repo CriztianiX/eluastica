@@ -75,8 +75,9 @@ do
       self._suggest = 0
       local _ = self._limit
       if type(query) == "table" then
-        return self:setRawQuery(query)
+        self:setRawQuery(query)
       end
+      return self
     end,
     __base = _base_0,
     __name = "EluasticaQuery",
@@ -97,6 +98,13 @@ do
     end
   })
   _base_0.__class = _class_0
+  local self = _class_0
+  self.create = function(self, query)
+    if not query then
+      query = EluasticaQueryMatchAll()
+    end
+    return EluasticaQuery(query:toArray())
+  end
   if _parent_0.__inherited then
     _parent_0.__inherited(_parent_0, _class_0)
   end

@@ -1,4 +1,5 @@
 local class = require ('eluastica.class')
+local EluasticaQuery = require ('eluastica.query').EluasticaQuery
 
 local OPTION_SEARCH_TYPE = 'search_type'
 local OPTION_ROUTING = 'routing'
@@ -21,10 +22,13 @@ local OPTION_SEARCH_TYPE_SUGGEST = 'suggest'
 local OPTION_SEARCH_TYPE_SCROLL = 'scroll'
 local OPTION_SEARCH_IGNORE_UNAVAILABLE = 'ignore_unavailable'
 
-return class.Search {
+local EluasticaSearch = class.EluasticaSearch {
   initialize = function (self, client)
     self._client = client
     self._indices = {}
+    self._types = {}
+
+    self._query = false
 	end,
   addIndex = function(self, index)
     if index then
@@ -39,5 +43,26 @@ return class.Search {
       self:addIndex(index);
     end
     return self
+  end,
+  addType = function(self, typed)
+    if typed:is_a("EluasticaType") then
+      typed = typed:getName()
+    end
+
+    if type(typed) ~= "string" then
+      error('Invalid type type')
+    end
+
+    table.insert(self._types, typed)
+    return self
+  end,
+  getQuery = function(self)
+    if not self._query then
+      self._query = EluasticaQuery:create()
+    end
+    return self._query
   end
+}
+return {
+  EluasticaSearch = EluasticaSearch
 }

@@ -4,6 +4,11 @@ import EluasticaQueryMatchAll from require "eluastica.query.match_all"
 class EluasticaQuery extends EluasticaParam
   name: "query"
 
+  @create: (query) =>
+    if not query
+      query = EluasticaQueryMatchAll!
+    return EluasticaQuery(query\toArray!)
+
   new: (query = nil) =>
     super!
     @_params = {}
@@ -12,6 +17,7 @@ class EluasticaQuery extends EluasticaParam
 
     if type(query) == "table"
       @setRawQuery(query)
+    @
 
   setRawQuery: (query) =>
     @_params = query
